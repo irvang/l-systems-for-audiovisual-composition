@@ -1,0 +1,232 @@
+//----------------------------------------------
+//====#1_ 3D Hilbert Curve
+
+        axiom = a, theta = 90º
+
+        case 'a':
+        newGen += "b-f+cfc+f-edfue-f+ddcfc+f+b//" ;
+        break;
+        case 'b':
+        newGen += "adfucfbufueuu-f-eu|fub|fcufua//";
+        break;
+        case 'c':
+        newGen += "|eu|fub-f+cufuaddfadfuc+f+bufue//";
+        break;
+        case 'e':
+        newGen += "|cfb-f+b|fadfuaddfb-f+b|fc//";
+        break;
+
+
+//------------------------------------------------
+//====#2 p. 12 - hexagonal Gosper curve
+
+        n = 4 , theta = 60º, (149.417º, n = 7)
+        axiom = h
+
+        case 'h':
+        newGen += "h+f++f-h--hh-f+" ;
+        break;
+        case 'f':
+        newGen += "-h+ff++f+h--h-f" ;
+        break;
+
+        //====VARIATION 1
+        case 'h':
+        newGen += "h+f++f-h--hh-f+" ;
+        break;
+        case 'f':
+        newGen += "-h+ff++f+f--h-f" ;
+        break;
+
+        //====VARIATION 2
+        case 'h':
+        newGen += "h+f+f-hu-hh-fd" ;
+        break;
+        case 'f':
+        newGen += "-h+ffl+F+h//-h-f" ;
+        break;
+
+        //====VARIATION 3:
+        30º, OF_PRIMITIVE_TRIANGLE_FAN
+        yields flower-like shape
+
+        case 'h':
+        newGen += "h+f+f-hu-hh-fd" ;
+        break;
+        case 'f':
+        newGen += "-h+ffl+F+h/-h-f" ;
+        break;
+
+
+
+//-----------------------------------------
+//====#3
+
+        Axiom: a     theta = 162º
+
+
+        case 'a':
+        newGen += "fb[af-Ff]" ;
+        break;
+        case 'b':
+        newGen += "ba[uf+ba]";
+        break;
+        case 'f':
+        newGen += "b[FFfuF+fF";
+        break;
+
+//-----------------------------------------
+//====#4_ Axiom: f , theta = 90º
+
+        case 'a':
+        newGen += "Ffb[F/daf-ff]" ;
+        break;
+        case 'b':
+        newGen += "ba[Fuf+ba]";
+        break;
+        case 'f':
+        newGen += "bFfab";
+        break;
+
+        //==VARIATION 2
+        case 'a':
+        newGen += "Ffb[F/daf-ff]" ;
+        break;
+        case 'b':
+        newGen += "Gga[G/dbg-fg]";
+        break;
+        case 'f':
+        newGen += "bFfab";
+        break;
+        case 'g':
+        newGen += "bGgba";
+        break;
+
+//----------------------------------
+//====#5_	Fractal plant cool
+
+        axiom: f   theta = 22.5º
+        //    original (Mandelbrot p. 25 c)
+
+        case 'f':
+        newGen += "ff-[-f+f+f]+[+f-f-f]" ;
+        break;
+
+
+        //====VARIATION 1
+        case 'f':
+        newGen += "f/f-[-f+fuf]+[+f-fdf]" ;
+        break;
+
+        //====VARIATION 2
+
+        theta = 91.8 and POINTS yields a really cool shape
+        theta = 90 pretty cool shape
+        theta = 82.8. Used with points has a cool effect
+
+        case 'f':
+        newGen += "f/f-[-f+fuf]|+[+f-fdf]" ;
+        break;
+
+        //====VARIATION 3 - 90º
+        case 'f':
+        newGen += "Ff/f-[-g+lfuf]+[+/g-fdf]" ;
+        break;
+
+//----------------------------------
+//====#6_	axiom: 'f'  theta: 1 //circle?
+
+
+        case 'f':
+        newGen += "f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+f+" ;//newGen = newGen + "AB"
+        break;
+
+//----------------------------------
+#7_
+
+        axiom: f   theta: 138.6   gen: 6
+
+        case 'f':
+        newGen += "f-guf+gd" ;
+        break;
+        case 'g':
+        newGen += "f/guflgd" ;
+        break;
+
+
+//---------------------------------
+#8_     Hilbert curve 2D
+
+        axiom: a,   theta: 90º
+
+        case 'a':
+        newGen += "-bf+afa+fb-" ;
+        break;
+
+        case 'b':
+        newGen += "+af-bfb-fa+" ;
+        break;
+
+//---------------------------------
+//==== #9 COMBINATION OF ISLANDS AND LAKES (Mandelbrot 95, page 12)
+
+        n = 2 ø = 90
+        Axiom: "f+f+f+f"
+
+        case 'f':
+        newGen += "f+F-ff+f+ff+fF+ff-F+ff-f-ff-fF-fff" ;
+        break;
+        case 'F':
+        newGen += "FFFFFF" ;
+        break;
+
+        //====VARIATION 1
+        -adds a '/' at end of first rule
+
+
+        case 'f':
+        newGen += "f+F-ff+f+ff+fF+ff-F+ff-f-ff-fF-fff/" ;
+        break;
+        case 'F':
+        newGen += "FFFFFF" ;
+        break;
+
+        //====VARIATION 2
+        -takes an 'f and adds a '/' at end of first rules
+
+        case 'f':
+        newGen += "f+F-ff+f+ff+fF+ff-F+ff-f-ff-fF-ff/" ;
+        break;
+        case 'F':
+        newGen += "FFFFFF" ;
+        break;
+
+//---------------------------------
+//==== #10		KOCH SNOWFLAKE
+
+        Axiom: "f--f--f"  ø = 60
+
+
+        case 'f':
+        newGen += "f+f--f+f" ;
+        break;
+
+        //====VARIATION 1: meshMode(OF_PRIMITIVE_TRIANGLE_STRIP_ADJACENCY)
+        yields a beautiful shape, variation consists only of the addition of '/-' at the end of the rule.
+
+        case 'f':
+        newGen += "f+f--f+f/-";
+        break;
+
+//---------------------------------
+
+
+
+
+
+
+
+
+
+
+

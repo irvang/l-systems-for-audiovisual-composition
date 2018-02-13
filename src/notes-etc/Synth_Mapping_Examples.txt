@@ -1,0 +1,230 @@
+void ofApp::drawSpeedLoop(bool metroBang){
+// there seems to be no need to turn it off
+
+if(metroBang){
+//  drawgate switches to true with s (for start)
+//  stringCount is incremented at end of this statement
+
+//  read the character from the string, then first tell the turtle what to do, afterwards tell the synthesizer what to do
+
+// turtleClass ------------------------------------------------
+for(int j =0; j< numberOfTurtles; j++){
+
+turtles[j].setTheta( ofRandom(thetaGui - thetaGuiRand, thetaGui + thetaGuiRand));
+
+turtles[j].setColor(color.x, color.y, color.z, drunk(alpha, 0.05, 1, 1.0));
+turtles[j].commandTurtle(currentLString[stringCount]);
+
+}
+//-------------
+
+//  ------------------------------------------------
+//  Synth parser
+//  These commands do not affect the turtle, only the synth. No commandTurtle function is present
+switch (currentLString[stringCount])
+{
+//-------------------------------------
+case 'f':   // 102:    // f, draw forward
+case 'h':
+case 'g':
+{
+drawSpeedMs = rhythm.at(arraysCounter % rhythmSize) * scaleDrawSpeed;
+arraysCounter++;
+
+for(int j =0; j< numberOfTurtles; j++){
+turtles[j].setStepSize(drunk(stepSize, 0.5, 1, 5));// change step sizes dynamically
+//                    cout<< theta << ", ";
+}
+
+}
+break;
+//-------------------------------------
+case '+':
+{
+
+color.set(1, 0, 0);
+freqInLoop = ((frequencies.at( 0 % freqsSize)) + 20);
+frequencies.assign(frequencies.at( 0 % freqsSize), freqInLoop);
+}
+break;
+//-------------------------------------
+case '-':
+{
+
+
+color.set(0.0, 1.0, 0.0);
+freqInLoop = ((frequencies.at( 0 % freqsSize)) - 10);
+frequencies.assign(frequencies.at( 0 % freqsSize), freqInLoop);
+
+
+}
+//-------------------------------------
+case '|':   //124:// |  // rotates 180º around Ru (- +)
+{
+
+
+}
+break;
+//-------------------------------------
+case 'u':   //117:// u, up
+{
+
+
+color.set(0, 0, 1);
+//                freqInLoop = frequencies.at( 2 % freqsSize);
+freqInLoop = ((frequencies.at( 0 % freqsSize)) * 1.1);
+if(freqInLoop > 10000){freqInLoop = 5000;
+//                    cout<< " resetHigh "<< endl ;
+}
+frequencies.assign(frequencies.at( 0 % freqsSize), freqInLoop);
+
+//                cout<< freqInLoop << ", " ;
+}
+break;
+//-------------------------------------
+case 'd':   //100:// d, up
+{
+
+
+color.set(1, 1, 1);
+//                freqInLoop = frequencies.at( 3 % freqsSize);
+freqInLoop = ((frequencies.at( 0 % freqsSize)) / 1.3);
+if(freqInLoop < 100){freqInLoop = 300;
+//                    cout<< " resetLow "<< endl;
+}
+frequencies.assign(frequencies.at( 0 % freqsSize), freqInLoop);
+}
+break;
+//-------------------------------------
+case 'l':   // l  // , roll left
+{
+
+}
+break;
+//-------------------------------------
+case '/':   //47:// /, roll right
+{
+
+}
+break;
+//-------------------------------------
+case 'F':   //70:// F, move forward but not draw
+{
+
+}
+break;
+//-------------------------------------
+case 'G':   //71:// G, move forward but not draw
+{
+
+}
+break;
+//-------------------------------------
+case '[':   //91:// [   push matrix
+{
+
+
+
+}
+break;
+//-------------------------------------
+case ']':   // 93:// ]   pop matrix
+{
+
+
+}
+break;
+//-------------------------------------
+case 'j':   // 93:// ]   pop matrix
+{
+color.set(0,1,1);
+alpha = 1;
+drawSpeedMs = 100 * scaleDrawSpeed;
+
+}
+break;
+//-------------------------------------
+case 'k':   // 93:// ]   pop matrix
+{
+color.set(1,0,1);
+alpha = 0.75;
+drawSpeedMs = 200 * scaleDrawSpeed;
+
+}
+break;
+
+//-------------------------------------
+case 'a':
+{
+waveType = "sineWave";
+windowType = "hanning";
+
+scaleDrawSpeed = scaleDrawSpeed * 1.2;
+if(scaleDrawSpeed > 1.0){scaleDrawSpeed = 1.0;}
+
+//                cout << scaleDrawSpeed << " at a , " << endl;
+}
+break;
+//-------------------------------------
+case 'b':
+{
+waveType = "sawnWave";
+//                windowType = "rectWin";
+
+
+}
+break;
+//-------------------------------------
+case 'c':
+{
+//                waveType = "square";
+windowType = "triWin";
+}
+break;
+//-------------------------------------
+case 'e':
+{
+waveType = "triWave";
+//                windowType = "rectWin";
+
+scaleDrawSpeed = scaleDrawSpeed * 0.9;
+if(scaleDrawSpeed < 0.01){scaleDrawSpeed = 0.3;}
+
+//                cout << scaleDrawSpeed << " at e , " << endl;
+}
+break;
+//-------------------------------------
+//-------------------------------------
+case 'm':   // 93:// ]   pop matrix
+{
+color.set(0.5,0.5,1);
+alpha = 0.75;
+drawSpeedMs = 400 * scaleDrawSpeed;
+
+}
+break;
+//-------------------------------------
+default: {
+//                sineSynth = sineSynth;
+//                squareSynth = squareSynth;
+}
+break;
+}   // end switch
+
+stringCount++;
+// Increment here so stringCount[0] (index 0 on stringCount) is counted.
+}
+
+if(stringCount == currentLString.length()){     // important that is here so it counts to the end. Tested.
+drawGate = false;                           // close gate
+stringCount = 0;                            // reset string to 0
+cout<< " done drawing. " << endl;           // notify string has ended
+}
+}
+//------------------------------------------------------
+
+
+
+
+
+//------------------------------------------------------

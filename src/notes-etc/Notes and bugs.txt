@@ -1,0 +1,127 @@
+//--------------------------------
+TO DO:
+
+-try doing a center with one slider and the next a width around that center
+
+-Do the random in a way that it never goes below 0.
+
+-a drunk. Basically a random number that moves around a center. The number is added or subtracted from that center, and the result becomes the new number. Needs to be fixed so that as I pass a number it is automatically updated. See tutorial 13. ***Problem fixed passing bale by reference. Now the variable is automatically updated.
+example: center = 90, drunk = 2, center = (ofRandom(center - drunk, center + drunk));
+**Issue: can only pass float values. Need to see how the type casting works when it is passed by reference
+
+-Do not neglect simplicity. Start simple, go from there.
+
+-A way to sonify the string once it has been drawn.
+
+-Once an image/shape has been drawn, what does it do when it is moved? How does sound react. I need to find a way in which the shape makes sound after it has been rendered.
+
+-Silence, a way to create pauses, rests. Could be a character that mutes the next note, or anything, but this is a necessary feature. Maybe it would mute so many sounds (fs) or so
+
+-How will angles relate to sound?
+
+-How does the space influence the sound?
+
+-Add delay and reverb.
+
+-Change so that only every so many characters a parameter would be changed. It might make more sense. For example, every 4 '+' change the grain.
+
+-Include stochasticity
+
+-Some way to visualize  data, as is on Dubois_p29
+
+-Instead of drawspeed being a constant value, it would be a vector of floats over which to iterate. Instead of being random, I would define the values.
+
+- See methods for strings, they offer some variations on what to do with an L-String. Reverse, scramble, etc.
+
+-The idea is to set several different arrays and that each element of the array is called by a different character of the L-system. These could be as well encapsulated in a function and in that way it would not be necessary to write all those lines for each command, rather only a constructor that passes the values to the array.
+
+-Incorporate blend with the color
+
+-Maybe the points in space move
+
+- Pass an array of colors as well?
+
+//--------------------------------
+
+
+t = 1s/freq; or t = 1000ms/freq. t should be equivalent to the length of my window
+1000ms/ 500 hZ = 2ms
+1000ms/ 250 hZ = 4ms
+
+//-------------
+Two ways to generate random integers
+int hello = rand() % 100;
+int hello = (int) ofRandom(100);
+cout << hello<< ", ";
+
+//-----------------------
+Which other things can be linked to these structures? How about position in space? Size and loudness? color? How does nature behaves? How does the view of a fountain relates to its sound? How does the view of a rock falling in the air relates to its sound, when does it happen?
+
+//-------------------
+Solved: I needed to calculate the rightHand as well.
+The drawing and erase bug. Why does it change direction when redrawing? This happens when I press C and then R. I see the same drawing but draws to different directions.
+
+//-------------
+turtle_grainClass_pops_03_11_16_B
+Some bugs fixed
+
+//-------------
+turtle_grainClass_pops_03_11_16_C
+trying to implement the mesh
+Succeeded
+
+//-------------
+03_13_16_A
+Added X to reset and redraw immediately
+Several features added like:
+-msToSamp(); convert from ms to samples
+-a drunk (ish) has been added. needs improvements with pointers
+- a random amount around center slider for angles
+
+//-------------
+03_15_16_C
+-Rhythms and durations vectorArrays added
+- precaution for msToSamp added with the if statement, so it is never less than 1 sample.
+//-------------
+03_18_16_A
+Fixed the issue with the windows and waves cutting the grains short. Now those values are included in the class so that when each specific synth is called it selects every time the same wave and window type for that grain.
+
+
+//---------------------------------
+Possible Mappings
+
+Visuals:
+
+-stepSize
+-color: randomize, drunk, or same (shades of)
+-Mesh: Type of line, points, etc. If ofPolyline is included, some things like curve and arc could be added.
+-Degrees.
+-Changing degrees.
+-Number of turtles.
+-Location of shapes. Which could include individual rotation of shapes.
+-Different degrees for shapes?
+-Stretching of shapes. Shearing?
+-Switch to curves, switch to lines.
+
+Audio:
+-Envelope (window) type
+-Duration of grain, probably related to formants.
+-Emission rate. Would define polyphony and overlap.
+-Duration of stream/cloud.
+-Type of waveform. Noise, or noise amount.
+-Modulation types?
+-Panning
+-Channel mask
+-Burst mask
+-Relation of formant frequencies? Fractals. What?
+-Noise type.
+-Delay and reverb. Filter(?)(per grain)
+
+
+
+
+
+
+
+
+
